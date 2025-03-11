@@ -1,0 +1,19 @@
+{
+  "name": "bigproject",
+  "version": "1.0.0",
+  "description": "A detailed application to learn all the basics of backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "JavaScript",
+    "React",
+    "MongoDB",
+    "Express",
+    "NodeJs",
+    "Project"
+  ],
+  "author": "Vibhor Mishra",
+  "license": "ISC"
+}
