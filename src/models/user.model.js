@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import brcypt from "brcypt";
+import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 const userSchema=new mongoose.Schema({
     username:{
@@ -39,18 +39,18 @@ const userSchema=new mongoose.Schema({
         required:[true,"Password is required"],
     },
     refreshToken:{
-
+        type:String
     }
 },{timestamps:true});
 userSchema.pre("save",async function(next){
     if(!this.isModified("password")){
         return next();
     }
-    this.password=brcypt.hash(this.password,10);
+    this.password= await bcrypt.hash(this.password,10);
     next();
 })
 userSchema.methods.isPasswordCorrect=async function(password){
-    return await brcypt.compare(password,this.password);
+    return await bcrypt.compare(password,this.password);
 }
 userSchema.methods.generateAccessToken=async function(){
     return jwt.sign(
